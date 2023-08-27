@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { WeatherData } from './models/models';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+  weatherData?: WeatherData
   placeName: string
 
   constructor(private weatherService: WeatherService) {
@@ -17,10 +19,14 @@ export class AppComponent implements OnInit {
   onSubmit(place: string) {
     this.weatherService.getWeatherData(place)?.subscribe({
       next: (response) => {
-        console.log(response);
+        this.weatherData = response as WeatherData
+        console.log(this.weatherData);
       },
       error: (error: HttpErrorResponse) => {
         console.error(error.message);
+      },
+      complete: () => {
+
       }
     })
   }
@@ -28,10 +34,14 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.weatherService.getWeatherData(this.placeName)?.subscribe({
       next: (response) => {
-        console.log(response);
+        this.weatherData = response as WeatherData
+        console.log(this.weatherData);
       },
       error: (error: HttpErrorResponse) => {
         console.error(error.message);
+      },
+      complete: () => {
+        console.warn('Fetch Complete');
       }
     })
   }

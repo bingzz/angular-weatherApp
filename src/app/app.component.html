@@ -1,5 +1,13 @@
 <div class="search-form">
   <mat-form-field>
-    <input type="text" matInput placeholder="Enter Place" />
+    <input
+      type="text"
+      matInput
+      placeholder="Enter Place"
+      [(ngModel)]="placeName"
+    />
   </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit(placeName)">
+    Search
+  </button>
 </div>
