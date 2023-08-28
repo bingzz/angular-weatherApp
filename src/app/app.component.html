@@ -1,13 +1,42 @@
-<div class="search-form">
-  <mat-form-field>
-    <input
-      type="text"
-      matInput
-      placeholder="Enter Place"
-      [(ngModel)]="placeName"
-    />
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSubmit(placeName)">
-    Search
-  </button>
+<div class="container">
+  <div class="search-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Place</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="placeName"
+        (keydown.enter)="onSubmit()"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Search
+    </button>
+  </div>
+  <div class="location">
+    <h2>Place: {{ weatherData?.name || "N/A" }}</h2>
+    <h4>Country: {{ weatherData?.sys?.country || "N/A" }}</h4>
+  </div>
+  <div class="weather-details">
+    <div class="weather-tile">
+      <div class="label">Current Weather</div>
+      <div class="detail">{{ weatherData?.weather?.[0]?.description || "N/A" }}</div>
+    </div>
+    <div class="weather-tile">
+      <div class="label">Temperature</div>
+      <div class="detail">
+        {{ weatherData?.main?.temp | temperatureFormat }}
+      </div>
+    </div>
+    <div class="weather-tile">
+      <div class="label">Humidity</div>
+      <div class="detail">{{ weatherData?.main?.humidity + '%' }}</div>
+    </div>
+    <div class="weather-tile">
+      <div class="label">Feels Like</div>
+      <div class="detail">
+        {{ weatherData?.main?.feels_like | temperatureFormat }}
+      </div>
+    </div>
+  </div>
 </div>

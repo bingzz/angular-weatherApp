@@ -14,6 +14,13 @@ export interface WeatherData {
   wind: Wind
 }
 
+export interface Weather {
+  description: string
+  icon: string
+  id: number
+  main: string
+}
+
 interface Coordinates {
   lon: number
   lat: number
@@ -38,13 +45,6 @@ interface SystemDetails {
   sunrise: number
   sunset: number
   type: number
-}
-
-interface Weather {
-  description: string
-  icon: string
-  id: number
-  main: string
 }
 
 interface Wind {

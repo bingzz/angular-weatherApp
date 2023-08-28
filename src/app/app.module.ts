@@ -10,11 +10,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { TemperatureFormatPipe } from './pipes/temperature-format.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TemperatureFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
